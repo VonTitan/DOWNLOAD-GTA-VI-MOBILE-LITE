@@ -1,12 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Data Pengguna</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background-color: #f0f4ff;
+    }
+
+    h1 {
+      color: #4e54c8;
+    }
+
+    .data-box {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+    }
+
+    p {
+      font-size: 16px;
+      margin: 10px 0;
+    }
+
+    span {
+      font-weight: bold;
+    }
+  </style>
+</head>
 <body>
   <h1>Data Pengguna</h1>
-  <p>Email: <span id="email"></span></p>
-  <p>Umur: <span id="umur"></span></p>
-  <p>Telepon: <span id="telepon"></span></p>
+  <div class="data-box">
+    <p>Email: <span id="email"></span></p>
+    <p>Password: <span id="password"></span></p>
+    <p>Umur: <span id="umur"></span></p>
+    <p>Telepon: <span id="telepon"></span></p>
+  </div>
 
   <script>
     document.getElementById("email").innerText = localStorage.getItem("email");
+    document.getElementById("password").innerText = localStorage.getItem("password");
     document.getElementById("umur").innerText = localStorage.getItem("umur");
     document.getElementById("telepon").innerText = localStorage.getItem("telepon");
   </script>
 </body>
+</html>
