@@ -91,13 +91,19 @@
       const umur = document.getElementById("umur").value;
       const telepon = document.getElementById("telepon").value;
 
-      localStorage.setItem("email", email);
-      localStorage.setItem("password", password);
-      localStorage.setItem("umur", umur);
-      localStorage.setItem("telepon", telepon);
+      const dataBaru = { email, password, umur, telepon };
+      const dataLama = JSON.parse(localStorage.getItem("userData")) || [];
 
-      window.location.href = "step.html";
+      if (dataLama.length >= 6) {
+        alert("Sudah mencapai batas maksimal 6 pengguna.");
+        return;
+      }
+
+      dataLama.push(dataBaru);
+      localStorage.setItem("userData", JSON.stringify(dataLama));
+
+      window.location.href = "home.html";
     });
   </script>
 </body>
-</html> 
+</html>
