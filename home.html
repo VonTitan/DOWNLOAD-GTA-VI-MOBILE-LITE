@@ -1,0 +1,12 @@
+<body>
+  <h1>Data Pengguna</h1>
+  <p>Email: <span id="email"></span></p>
+  <p>Umur: <span id="umur"></span></p>
+  <p>Telepon: <span id="telepon"></span></p>
+
+  <script>
+    document.getElementById("email").innerText = localStorage.getItem("email");
+    document.getElementById("umur").innerText = localStorage.getItem("umur");
+    document.getElementById("telepon").innerText = localStorage.getItem("telepon");
+  </script>
+</body>
