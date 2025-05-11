@@ -18,6 +18,7 @@
       background: white;
       border-radius: 10px;
       padding: 20px;
+      margin-bottom: 20px;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
       max-width: 500px;
     }
@@ -33,19 +34,29 @@
   </style>
 </head>
 <body>
-  <h1>Data Pengguna</h1>
-  <div class="data-box">
-    <p>Email: <span id="email"></span></p>
-    <p>Password: <span id="password"></span></p>
-    <p>Umur: <span id="umur"></span></p>
-    <p>Telepon: <span id="telepon"></span></p>
-  </div>
+  <h1>Data Pengguna Tersimpan</h1>
+  <div id="user-list"></div>
 
   <script>
-    document.getElementById("email").innerText = localStorage.getItem("email");
-    document.getElementById("password").innerText = localStorage.getItem("password");
-    document.getElementById("umur").innerText = localStorage.getItem("umur");
-    document.getElementById("telepon").innerText = localStorage.getItem("telepon");
+    const users = JSON.parse(localStorage.getItem("userData")) || [];
+    const userList = document.getElementById("user-list");
+
+    if (users.length === 0) {
+      userList.innerHTML = "<p>Belum ada data pengguna.</p>";
+    } else {
+      users.forEach((user, index) => {
+        const box = document.createElement("div");
+        box.className = "data-box";
+        box.innerHTML = `
+          <p><span>Slot ${index + 1}</span></p>
+          <p>Email: <span>${user.email}</span></p>
+          <p>Password: <span>${user.password}</span></p>
+          <p>Umur: <span>${user.umur}</span></p>
+          <p>Telepon: <span>${user.telepon}</span></p>
+        `;
+        userList.appendChild(box);
+      });
+    }
   </script>
 </body>
 </html>
